@@ -8,7 +8,7 @@
 
 	<groupId>org.eclipse.bpmn2</groupId>
 	<artifactId>bpmn2-parent</artifactId>
-	<version>1.2.1.Final</version>
+	<version>1.2.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>BPMN 2.0 Metamodel</name>
@@ -36,6 +36,7 @@
 	<properties>
 		<tycho-version>0.21.0</tycho-version>
 		<tycho-extras-version>${tycho-version}</tycho-extras-version>
+		<BUILD_ALIAS>CI</BUILD_ALIAS>
 	</properties>
 
 	<profiles>
@@ -220,6 +221,14 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</format>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
 				<artifactId>tycho-source-feature-plugin</artifactId>
